@@ -64,6 +64,9 @@ Make sure you also have your build essentials, like `make` and `gcc`.
 $ make
 cc -Wall -g -ggdb -DDEBUG -c simpleallocator.c
 cc -Wall -g -ggdb -DDEBUG -o repl repl.c simpleallocator.o -lreadline
+
+## Running the REPL
+
 $ ./repl
 new zone on freelist 0x7fa15b57d018 data 0x7fa15b57d030 len 102352
 found spot for 2, 0x7fa15b57d018 len 102352
@@ -140,6 +143,19 @@ Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
 
 (press ctrl+c to terminate)
+```
+
+## Dockerfile
+
+There's also a Dockerfile to create a Debian 12 environment for building
+the REPL from source.
+
+```
+$ docker build -t heap-playground .
+$ docker run -v .:/heap -it heap-playground /bin/bash
+# cd /heap
+# make 
+...
 ```
 
 ## Work in progress
